@@ -72,8 +72,6 @@ public final class SubjectAwares
    */
   public static SubjectAware find(Class<?> clazz)
   {
-    System.out.println(clazz);
-
     return find(clazz.getAnnotations());
   }
 
