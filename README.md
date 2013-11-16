@@ -5,6 +5,7 @@ JUnit rule to simplify apache shiro unit tests.
 
 ##Sample:
 
+### shiro.ini
 ```ini
 [users]
 trillian = secret, user
@@ -13,7 +14,7 @@ trillian = secret, user
 admin = *
 user = something:*
 ```
-
+### ShiroUnitTest.java
 ```java
 public class ShiroUnitTest {
 
