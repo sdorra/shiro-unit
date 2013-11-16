@@ -52,7 +52,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
-      <version>1.7.5</version>
+      <version>${slf4j.version}</version>
       <scope>test</scope>
     </dependency>
     
@@ -109,7 +109,9 @@
           <keywords>true</keywords>
           <links>
             <link>http://download.oracle.com/javase/6/docs/api/</link>
+            <link>http://shiro.apache.org/static/1.2.2/apidocs/</link>
             <link>http://junit.sourceforge.net/javadoc/</link>
+            <link>http://slf4j.org/api/</link>
           </links>
         </configuration>
       </plugin>
@@ -232,11 +234,10 @@
     <!-- test libraries -->
     <junit.version>4.11</junit.version>
     <shiro.version>1.2.2</shiro.version>
-    <mockito.version>1.9.5</mockito.version>
+    <slf4j.version>1.7.5</slf4j.version>
     
     <!-- build properties -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.javaLevel>1.6</project.build.javaLevel>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 </project>
