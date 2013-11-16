@@ -23,6 +23,7 @@
  */
 
 
+
 package sonia.junit.shiro.internal;
 
 //~--- non-JDK imports --------------------------------------------------------

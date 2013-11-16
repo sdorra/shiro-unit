@@ -22,13 +22,19 @@
  * SOFTWARE.
  */
 
+
+
 package sonia.junit.shiro;
+
+//~--- non-JDK imports --------------------------------------------------------
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+
 import org.junit.Rule;
-import static org.junit.Assert.*;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  *
@@ -36,16 +42,24 @@ import org.junit.Test;
  */
 public class ShiroRuleCustomAnnotationTest
 {
-  
+
+  /**
+   * Method description
+   *
+   */
   @Test
   @ShiroRuleCustomAnnotation
-  public void testCustomAnnotation(){
+  public void testCustomAnnotation()
+  {
     Subject subject = SecurityUtils.getSubject();
+
     assertNotNull(subject);
     assertEquals("trillian", subject.getPrincipal());
   }
-  
+
+  //~--- fields ---------------------------------------------------------------
+
+  /** Field description */
   @Rule
   public ShiroRule rule = new ShiroRule();
-  
 }

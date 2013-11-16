@@ -23,15 +23,18 @@
  */
 
 
+
 package sonia.junit.shiro;
 
 //~--- non-JDK imports --------------------------------------------------------
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
 import org.junit.Rule;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  *
@@ -50,20 +53,31 @@ public class ShiroRuleClassTest
    *
    */
   @Test
-  public void testClassAnnotation() {
+  public void testClassAnnotation()
+  {
     Subject subject = SecurityUtils.getSubject();
+
     assertNotNull(subject);
     assertEquals("trillian", subject.getPrincipal());
   }
-  
+
+  /**
+   * Method description
+   *
+   */
   @Test
   @SubjectAware(username = "slarti", password = "pwd")
-  public void testMegeWithMethodAnnotation(){
+  public void testMegeWithMethodAnnotation()
+  {
     Subject subject = SecurityUtils.getSubject();
+
     assertNotNull(subject);
-    assertEquals("slarti", subject.getPrincipal());    
+    assertEquals("slarti", subject.getPrincipal());
   }
-  
+
+  //~--- fields ---------------------------------------------------------------
+
+  /** Field description */
   @Rule
   public ShiroRule rule = new ShiroRule();
 }
