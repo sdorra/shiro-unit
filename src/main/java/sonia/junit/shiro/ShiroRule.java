@@ -46,6 +46,8 @@ import sonia.junit.shiro.internal.SubjectAwareDescriptor;
 import sonia.junit.shiro.internal.SubjectAwares;
 
 /**
+ * The shiro rule starts the apache shiro security system for each method or 
+ * class which is annotated with the {@link SubjectAware} annotation.
  *
  * @author Sebastian Sdorra
  */
@@ -53,14 +55,7 @@ public class ShiroRule implements MethodRule
 {
 
   /**
-   * Method description
-   *
-   *
-   * @param base
-   * @param method
-   * @param target
-   *
-   * @return
+   * {@inheritDoc}
    */
   @Override
   public Statement apply(final Statement base, FrameworkMethod method,
@@ -107,10 +102,10 @@ public class ShiroRule implements MethodRule
   //~--- set methods ----------------------------------------------------------
 
   /**
-   * Method description
+   * Set a subject manually for the current method execution.
    *
    *
-   * @param subject
+   * @param subject subject to set
    */
   public void setSubject(Subject subject)
   {

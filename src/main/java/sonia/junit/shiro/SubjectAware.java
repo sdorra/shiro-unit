@@ -34,6 +34,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * The {@link SubjectAware} annotation starts the shiro security system before
+ * a test methods starts. The annotation can be used on class, method level
+ * or in a custom annotation.
  *
  * @author Sebastian Sdorra
  */
@@ -41,7 +44,27 @@ import java.lang.annotation.Target;
 @Target({ ElementType.METHOD, ElementType.TYPE, ElementType.ANNOTATION_TYPE })
 public @interface SubjectAware
 {
+
+  /**
+   * Username for authentication. The username should be configured in the
+   * configuration ini.
+   *
+   * @return username for authentication
+   */
   String username()      default "";
+
+  /**
+   * Password for authentication.
+   *
+   * @return  password for authentication
+   */
   String password()      default "";
+
+  /**
+   * Classpath path to shiro ini configuration, if the ini is not specified an
+   * empty configuration is loaded.
+   *
+   * @return path to shiro ini
+   */
   String configuration() default "";
 }
