@@ -33,6 +33,7 @@ import org.apache.shiro.UnavailableSecurityManagerException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.Factory;
 import org.apache.shiro.util.LifecycleUtils;
 import org.apache.shiro.util.ThreadContext;
@@ -102,6 +103,21 @@ public class ShiroRule implements MethodRule
       }
     };
   }
+
+  //~--- set methods ----------------------------------------------------------
+
+  /**
+   * Method description
+   *
+   *
+   * @param subject
+   */
+  public void setSubject(Subject subject)
+  {
+    ThreadContext.bind(subject);
+  }
+
+  //~--- methods --------------------------------------------------------------
 
   /**
    * Method description
