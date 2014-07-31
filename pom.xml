@@ -8,6 +8,7 @@
   <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>shiro-unit</name>
+  <description>JUnit rule to simplify apache shiro unit tests.</description>
   <url>http://sdorra.github.io/shiro-unit</url>
 
   <licenses>
