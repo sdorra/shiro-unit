@@ -5,7 +5,7 @@
 
   <groupId>com.github.sdorra</groupId>
   <artifactId>shiro-unit</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>shiro-unit</name>
   <description>JUnit rule to simplify apache shiro unit tests.</description>
@@ -31,7 +31,7 @@
     <connection>scm:git:git@github.com:sdorra/shiro-unit.git</connection>
     <developerConnection>scm:git:git@github.com:sdorra/shiro-unit.git</developerConnection>
     <url>git@github.com:sdorra/shiro-unit.git</url>
-    <tag>1.0.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
