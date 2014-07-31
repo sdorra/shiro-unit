@@ -28,37 +28,48 @@
         </ul>
       </header>
       <section>
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h1>
+<a name="shiro-unit" class="anchor" href="#shiro-unit"><span class="octicon octicon-link"></span></a>shiro-unit</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>JUnit rule to simplify apache shiro unit tests.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h2>
+<a name="sample" class="anchor" href="#sample"><span class="octicon octicon-link"></span></a>Sample:</h2>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="shiroini" class="anchor" href="#shiroini"><span class="octicon octicon-link"></span></a>shiro.ini</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<div class="highlight highlight-ini"><pre><span class="k">[users]</span>
+<span class="na">trillian</span> <span class="o">=</span> <span class="s">secret, user</span>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<span class="k">[roles]</span>
+<span class="na">admin</span> <span class="o">=</span> <span class="s">*</span>
+<span class="na">user</span> <span class="o">=</span> <span class="s">something:*</span>
+</pre></div>
 
 <h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a name="shirounittestjava" class="anchor" href="#shirounittestjava"><span class="octicon octicon-link"></span></a>ShiroUnitTest.java</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<div class="highlight highlight-java"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ShiroUnitTest</span> <span class="o">{</span>
+
+  <span class="nd">@Test</span>
+  <span class="nd">@SubjectAware</span><span class="o">(</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="s">"trillian"</span><span class="o">,</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="s">"secret"</span><span class="o">,</span>
+    <span class="n">configuration</span> <span class="o">=</span> <span class="s">"classpath:path/to/shiro.ini"</span>
+  <span class="o">)</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMethod</span><span class="o">(){</span>
+    <span class="n">Subject</span> <span class="n">subject</span> <span class="o">=</span> <span class="n">SecurityUtils</span><span class="o">.</span><span class="na">getSubject</span><span class="o">();</span>
+
+    <span class="n">assertNotNull</span><span class="o">(</span><span class="n">subject</span><span class="o">);</span>
+    <span class="n">assertTrue</span><span class="o">(</span><span class="n">subject</span><span class="o">.</span><span class="na">isAuthenticated</span><span class="o">());</span>
+    <span class="n">assertEquals</span><span class="o">(</span><span class="s">"trillian"</span><span class="o">,</span> <span class="n">subject</span><span class="o">.</span><span class="na">getPrincipal</span><span class="o">());</span>
+  <span class="o">}</span>
+
+  <span class="nd">@Rule</span>
+  <span class="kd">public</span> <span class="n">ShiroRule</span> <span class="n">rule</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">ShiroRule</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/sdorra">sdorra</a></p>
