@@ -24,7 +24,7 @@
 
 
 
-package sonia.junit.shiro;
+package com.github.sdorra.shiro;
 
 //~--- JDK imports ------------------------------------------------------------
 

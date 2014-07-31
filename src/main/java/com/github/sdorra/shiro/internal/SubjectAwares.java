@@ -24,11 +24,11 @@
 
 
 
-package sonia.junit.shiro.internal;
+package com.github.sdorra.shiro.internal;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import sonia.junit.shiro.SubjectAware;
+import com.github.sdorra.shiro.SubjectAware;
 
 //~--- JDK imports ------------------------------------------------------------
 

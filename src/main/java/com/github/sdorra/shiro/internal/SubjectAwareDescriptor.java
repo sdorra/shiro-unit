@@ -24,11 +24,11 @@
 
 
 
-package sonia.junit.shiro.internal;
+package com.github.sdorra.shiro.internal;
 
 //~--- non-JDK imports --------------------------------------------------------
 
-import sonia.junit.shiro.SubjectAware;
+import com.github.sdorra.shiro.SubjectAware;
 
 /**
  *
@@ -144,7 +144,7 @@ public class SubjectAwareDescriptor
   //~--- fields ---------------------------------------------------------------
 
   /** Field description */
-  private String configuration = "classpath:sonia/junit/shiro/empty.ini";
+  private String configuration = "classpath:com/github/sdorra/shiro/empty.ini";
 
   /** Field description */
   private boolean merged = false;

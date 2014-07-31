@@ -24,11 +24,13 @@
 
 
 
-package sonia.junit.shiro;
+package com.github.sdorra.shiro;
 
 //~--- non-JDK imports --------------------------------------------------------
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.subject.Subject;
 
 import org.junit.Rule;
@@ -40,12 +42,8 @@ import static org.junit.Assert.*;
  *
  * @author Sebastian Sdorra
  */
-@SubjectAware(
-  username = "trillian",
-  password = "secret",
-  configuration = "classpath:sonia/junit/shiro/001.ini"
-)
-public class ShiroRuleClassTest
+@SubjectAware(configuration = "classpath:com/github/sdorra/shiro/001.ini")
+public class ShiroRuleManualSubjectTest
 {
 
   /**
@@ -53,26 +51,19 @@ public class ShiroRuleClassTest
    *
    */
   @Test
-  public void testClassAnnotation()
+  public void testSetSubjectManually()
   {
-    Subject subject = SecurityUtils.getSubject();
+    assertFalse(SecurityUtils.getSubject().isAuthenticated());
 
-    assertNotNull(subject);
-    assertEquals("trillian", subject.getPrincipal());
-  }
+    PrincipalCollection col = new SimplePrincipalCollection("hansolo", "test");
 
-  /**
-   * Method description
-   *
-   */
-  @Test
-  @SubjectAware(username = "slarti", password = "pwd")
-  public void testMegeWithMethodAnnotation()
-  {
-    Subject subject = SecurityUtils.getSubject();
+    Subject subject =
+      new Subject.Builder().authenticated(true).principals(col).buildSubject();
 
-    assertNotNull(subject);
-    assertEquals("slarti", subject.getPrincipal());
+    rule.setSubject(subject);
+
+    assertTrue(SecurityUtils.getSubject().isAuthenticated());
+    assertEquals("hansolo", SecurityUtils.getSubject().getPrincipal());
   }
 
   //~--- fields ---------------------------------------------------------------

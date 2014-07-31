@@ -24,12 +24,11 @@
 
 
 
-package sonia.junit.shiro;
+package com.github.sdorra.shiro;
 
 //~--- non-JDK imports --------------------------------------------------------
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.UnavailableSecurityManagerException;
 import org.apache.shiro.subject.Subject;
 
 import org.junit.Rule;
@@ -41,7 +40,12 @@ import static org.junit.Assert.*;
  *
  * @author Sebastian Sdorra
  */
-public class ShiroRuleMethodTest
+@SubjectAware(
+  username = "trillian",
+  password = "secret",
+  configuration = "classpath:com/github/sdorra/shiro/001.ini"
+)
+public class ShiroRuleClassTest
 {
 
   /**
@@ -49,33 +53,11 @@ public class ShiroRuleMethodTest
    *
    */
   @Test
-  @SubjectAware(configuration = "classpath:sonia/junit/shiro/001.ini")
-  public void testAnonymous()
+  public void testClassAnnotation()
   {
     Subject subject = SecurityUtils.getSubject();
 
     assertNotNull(subject);
-    assertNull(subject.getPrincipal());
-    assertNull(subject.getPrincipals());
-    assertFalse(subject.isAuthenticated());
-  }
-
-  /**
-   * Method description
-   *
-   */
-  @Test
-  @SubjectAware(
-    username = "trillian",
-    password = "secret",
-    configuration = "classpath:sonia/junit/shiro/001.ini"
-  )
-  public void testAuthentication()
-  {
-    Subject subject = SecurityUtils.getSubject();
-
-    assertNotNull(subject);
-    assertTrue(subject.isAuthenticated());
     assertEquals("trillian", subject.getPrincipal());
   }
 
@@ -83,21 +65,14 @@ public class ShiroRuleMethodTest
    * Method description
    *
    */
-  @Test(expected = UnavailableSecurityManagerException.class)
-  public void testWithoutAnnotation()
-  {
-    SecurityUtils.getSubject();
-  }
-
-  /**
-   * Method description
-   *
-   */
   @Test
-  @SubjectAware
-  public void testWithoutConfiguration()
+  @SubjectAware(username = "slarti", password = "pwd")
+  public void testMegeWithMethodAnnotation()
   {
-    testAnonymous();
+    Subject subject = SecurityUtils.getSubject();
+
+    assertNotNull(subject);
+    assertEquals("slarti", subject.getPrincipal());
   }
 
   //~--- fields ---------------------------------------------------------------

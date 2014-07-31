@@ -24,51 +24,24 @@
 
 
 
-package sonia.junit.shiro;
+package com.github.sdorra.shiro;
 
-//~--- non-JDK imports --------------------------------------------------------
+//~--- JDK imports ------------------------------------------------------------
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.subject.SimplePrincipalCollection;
-import org.apache.shiro.subject.Subject;
-
-import org.junit.Rule;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
  *
  * @author Sebastian Sdorra
  */
-@SubjectAware(configuration = "classpath:sonia/junit/shiro/001.ini")
-public class ShiroRuleManualSubjectTest
-{
-
-  /**
-   * Method description
-   *
-   */
-  @Test
-  public void testSetSubjectManually()
-  {
-    assertFalse(SecurityUtils.getSubject().isAuthenticated());
-
-    PrincipalCollection col = new SimplePrincipalCollection("hansolo", "test");
-
-    Subject subject =
-      new Subject.Builder().authenticated(true).principals(col).buildSubject();
-
-    rule.setSubject(subject);
-
-    assertTrue(SecurityUtils.getSubject().isAuthenticated());
-    assertEquals("hansolo", SecurityUtils.getSubject().getPrincipal());
-  }
-
-  //~--- fields ---------------------------------------------------------------
-
-  /** Field description */
-  @Rule
-  public ShiroRule rule = new ShiroRule();
-}
+@SubjectAware(
+  username = "trillian",
+  password = "secret",
+  configuration = "classpath:com/github/sdorra/shiro/001.ini"
+)
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.METHOD, ElementType.TYPE })
+public @interface ShiroRuleCustomAnnotation {}

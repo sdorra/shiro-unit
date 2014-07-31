@@ -24,7 +24,7 @@
 
 
 
-package sonia.junit.shiro;
+package com.github.sdorra.shiro;
 
 //~--- non-JDK imports --------------------------------------------------------
 
@@ -42,11 +42,11 @@ import org.junit.rules.MethodRule;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
 
-import sonia.junit.shiro.internal.SubjectAwareDescriptor;
-import sonia.junit.shiro.internal.SubjectAwares;
+import com.github.sdorra.shiro.internal.SubjectAwareDescriptor;
+import com.github.sdorra.shiro.internal.SubjectAwares;
 
 /**
- * The shiro rule starts the apache shiro security system for each method or 
+ * The shiro rule starts the apache shiro security system for each method or
  * class which is annotated with the {@link SubjectAware} annotation.
  *
  * @author Sebastian Sdorra

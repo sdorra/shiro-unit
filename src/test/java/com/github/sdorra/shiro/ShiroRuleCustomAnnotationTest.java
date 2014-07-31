@@ -24,24 +24,42 @@
 
 
 
-package sonia.junit.shiro;
+package com.github.sdorra.shiro;
 
-//~--- JDK imports ------------------------------------------------------------
+//~--- non-JDK imports --------------------------------------------------------
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+
+import org.junit.Rule;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  *
  * @author Sebastian Sdorra
  */
-@SubjectAware(
-  username = "trillian",
-  password = "secret",
-  configuration = "classpath:sonia/junit/shiro/001.ini"
-)
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ ElementType.METHOD, ElementType.TYPE })
-public @interface ShiroRuleCustomAnnotation {}
+public class ShiroRuleCustomAnnotationTest
+{
+
+  /**
+   * Method description
+   *
+   */
+  @Test
+  @ShiroRuleCustomAnnotation
+  public void testCustomAnnotation()
+  {
+    Subject subject = SecurityUtils.getSubject();
+
+    assertNotNull(subject);
+    assertEquals("trillian", subject.getPrincipal());
+  }
+
+  //~--- fields ---------------------------------------------------------------
+
+  /** Field description */
+  @Rule
+  public ShiroRule rule = new ShiroRule();
+}
