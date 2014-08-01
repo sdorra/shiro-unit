@@ -36,3 +36,13 @@ public class ShiroUnitTest {
   public ShiroRule rule = new ShiroRule();
 }
 ```
+### Maven usage 
+
+Artifacts are deployed to [Maven Central](http://search.maven.org). To use, drop this in your pom.xml: 
+```
+<dependency>
+    <groupId>com.github.sdorra</groupId>
+    <artifactId>shiro-unit</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
