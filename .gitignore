@@ -19,3 +19,6 @@ Desktop DF
 .project
 .classpath
 .settings
+# intellij files
+.idea
+*.iml
