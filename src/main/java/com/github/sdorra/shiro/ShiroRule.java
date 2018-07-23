@@ -61,6 +61,8 @@ public class ShiroRule implements MethodRule
   public Statement apply(final Statement base, FrameworkMethod method,
     Object target)
   {
+    tearDownShiro(); // clean up whatever other tests might have left behind
+
     final SubjectAwareDescriptor desc = new SubjectAwareDescriptor();
     SubjectAware subjectAware = SubjectAwares.find(target);
 
