@@ -149,16 +149,13 @@ public class ShiroRule implements MethodRule
    * Method description
    *
    */
-  private void tearDownShiro()
+  static void tearDownShiro()
   {
     try
     {
       SecurityManager securityManager = SecurityUtils.getSecurityManager();
 
       LifecycleUtils.destroy(securityManager);
-      ThreadContext.unbindSecurityManager();
-      ThreadContext.unbindSubject();
-      ThreadContext.remove();
     }
     catch (UnavailableSecurityManagerException e)
     {
@@ -167,6 +164,10 @@ public class ShiroRule implements MethodRule
       // (for example, maybe the subclass is a unit test and it didn't
       // need a SecurityManager instance because it was using only mock Subject instances)
     }
+
+    ThreadContext.unbindSecurityManager();
+    ThreadContext.unbindSubject();
+    ThreadContext.remove();
 
     SecurityUtils.setSecurityManager(null);
   }

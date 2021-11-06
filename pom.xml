@@ -65,6 +65,13 @@
       <version>${slf4j.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
     
   </dependencies>
   
@@ -296,7 +303,8 @@
     <junit.version>4.11</junit.version>
     <shiro.version>1.2.2</shiro.version>
     <slf4j.version>1.7.5</slf4j.version>
-    
+    <mockito.version>4.0.0</mockito.version>
+
     <!-- build properties -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.javaLevel>1.6</project.build.javaLevel>
