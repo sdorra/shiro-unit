@@ -3,9 +3,10 @@ shiro-unit
 
 JUnit rule to simplify apache shiro unit tests.
 
-##Sample:
+## Sample:
 
 ### shiro.ini
+
 ```ini
 [users]
 trillian = secret, user
@@ -14,7 +15,9 @@ trillian = secret, user
 admin = *
 user = something:*
 ```
+
 ### ShiroUnitTest.java
+
 ```java
 public class ShiroUnitTest {
 
@@ -36,6 +39,7 @@ public class ShiroUnitTest {
   public ShiroRule rule = new ShiroRule();
 }
 ```
+
 ### Maven usage 
 
 Artifacts are deployed to [Maven Central](http://search.maven.org). To use, drop this in your pom.xml: 
